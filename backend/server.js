@@ -21,13 +21,24 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://clinicmanagementsystembypranay.netlify.app'
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://clinicmanagementsystembypranay.netlify.app'
-  ],
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
+
 app.use(express.json());
 app.use(morgan('dev')); // Logs requests
 app.use(logger);
