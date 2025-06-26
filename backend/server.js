@@ -22,8 +22,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-origin:'http://localhost:5000',
-credentials: true 
+  origin: [
+    'http://localhost:5173',
+    'https://clinicmanagementsystembypranay.netlify.app'
+  ],
+  credentials: true
 }));
 app.use(express.json());
 app.use(morgan('dev')); // Logs requests
