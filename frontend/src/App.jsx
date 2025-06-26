@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Pages
 import LoginPage from './pages/LoginPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import DoctorPage from './pages/DoctorPage.jsx';
+import DoctorPage from './pages/Doctorpage.jsx';
 import ReceptionistPage from './pages/ReceptionistPage.jsx';
 import HistoryPage from './pages/HistoryPage.jsx';
 import BillingPage from './pages/BillingPage.jsx';
